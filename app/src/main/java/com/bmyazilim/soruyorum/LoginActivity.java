@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     // Note: Your consumer key and secret should be obfuscated in your source code before shipping.
     private static final String TWITTER_KEY = "DlpF2zsN4tmcsOhIcHSzojAiV";
     private static final String TWITTER_SECRET = "oiGE1ZwbE88uRPuOj8iVuk51d2qxQksjMDNfrrDvtPNTFJLHXX";
-
+    VolleyStuff volleyStuff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +30,8 @@ public class LoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
 //        AppEventsLogger.activateApp(this);
         setContentView(R.layout.activity_login);
+        volleyStuff=new VolleyStuff();
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://soruyorum.bmyazilim.net/index.php?username=mertat&name=asastt&surname=at&password=at&mail=at&pictureid=1";
-
-        StringRequest request=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                Toast.makeText(LoginActivity.this, "Cevap : "+response, Toast.LENGTH_LONG).show();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(LoginActivity.this, "Hata : "+error.toString(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-   //     queue.add(request);
+        volleyStuff.jsonObjectRequest("http://soruyorum.bmyazilim.net/kontrol.php?islem=kullaniciliste","kullaniciliste");
     }
 }
