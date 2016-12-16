@@ -1,5 +1,7 @@
 package com.bmyazilim.soruyorum.utils;
 
+import android.content.Intent;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
@@ -23,7 +25,7 @@ public class JsonClassParser {
         try {
             String model = jsonObject.getString("model");
 
-
+            
 
         } catch (JSONException e) {
             e.printStackTrace();

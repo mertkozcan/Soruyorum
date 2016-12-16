@@ -1,22 +1,13 @@
 package com.bmyazilim.soruyorum;
 
-import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.facebook.FacebookSdk;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
 import io.fabric.sdk.android.Fabric;
-import studios.codelight.smartloginlibrary.SmartLoginBuilder;
-import studios.codelight.smartloginlibrary.SmartLoginConfig;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,15 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         volleyStuff=new VolleyStuff();
 
         volleyStuff.jsonObjectRequest("http://soruyorum.bmyazilim.net/kontrol.php?islem=kullaniciliste","kullaniciliste");
-        SmartLoginBuilder loginBuilder = new SmartLoginBuilder();
-        Intent intent = loginBuilder.with(getApplicationContext())
 
-                .isFacebookLoginEnabled(true).withFacebookAppId("364072653945665")
-                .isGoogleLoginEnabled(true)
-
-
-                .build();
-        startActivityForResult(intent, SmartLoginConfig.LOGIN_REQUEST);
     }
 }
 
