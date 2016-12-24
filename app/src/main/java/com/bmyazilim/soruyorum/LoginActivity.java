@@ -3,9 +3,14 @@ package com.bmyazilim.soruyorum;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.bmyazilim.soruyorum.models.Users;
 import com.facebook.FacebookSdk;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+
+import java.util.ArrayList;
+
 import io.fabric.sdk.android.Fabric;
 
 
@@ -26,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         volleyStuff=new VolleyStuff();
 
-        volleyStuff.jsonObjectRequest("http://soruyorum.bmyazilim.net/kontrol.php?islem=kullaniciliste","kullaniciliste");
+
 
     }
 }
