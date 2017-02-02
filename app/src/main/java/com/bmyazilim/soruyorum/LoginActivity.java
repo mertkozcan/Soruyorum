@@ -65,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
         Button btngiris=(Button)findViewById(R.id.btn_login);
         LoginButton btnface=(LoginButton)findViewById(R.id.btn_face);
          btntwit=(TwitterLoginButton)findViewById(R.id.btn_twit);
-        SignInButton btngoogle=(SignInButton)findViewById(R.id.btn_google);
 
         btnface.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
 

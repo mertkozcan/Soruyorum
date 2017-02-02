@@ -83,12 +83,14 @@
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
+            android:id="@+id/btn_face"
             />
 
         <com.twitter.sdk.android.core.identity.TwitterLoginButton
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginBottom="10dp"
+            android:id="@+id/btn_twit"
             />
 
 
