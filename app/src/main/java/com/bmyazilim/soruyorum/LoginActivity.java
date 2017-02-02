@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //face login
         btnface.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -111,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //twitter login
         btntwit.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
