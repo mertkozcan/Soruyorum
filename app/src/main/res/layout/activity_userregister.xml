@@ -13,10 +13,11 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
         <ImageView android:src="@mipmap/ic_launcher"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="24dp"
             android:layout_gravity="center"
+            android:id="@+id/input_picture"
 
             />
 
@@ -31,12 +32,9 @@
             <EditText android:id="@+id/input_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:hint="Kullanıcı Adı"
                 android:textColorHint="#99ccff"
-
-
-
+                android:digits="0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzÁáÂâÃãÀàÇçÉéÊêÍíÓóÔôÕõÚú"
                 />
         </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout

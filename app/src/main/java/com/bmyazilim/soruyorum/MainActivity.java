@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setText("Keşfet");
         tabLayout.getTabAt(2).setText("Profil");
 
+
+
     }
 
 
@@ -71,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case 0: return new HomeFragment();
                 case 1: return new HomeFragment();
-                case 2: return new HomeFragment();
+                case 2: return new ProfileFragment();
                 default: return new HomeFragment();
             }
         }

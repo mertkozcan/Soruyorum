@@ -12,13 +12,13 @@ public class Users {
     public String userPassword;
     public String userMail;
     public int profilePictureID;
-    public byte faceLogin;
-    public byte twitLogin;
-    public byte googleLogin;
-    public byte deleted;
+    public int faceLogin;
+    public int twitLogin;
+    public int googleLogin;
+    public int deleted;
 
     public Users(int _userID,String _userName,String _userReelName, String _userSurname, String _userPassword, String _userMail,
-                 int _profilePictureID, byte _faceLogin, byte _twitLogin, byte _googleLogin, byte _deleted){
+                 int _profilePictureID, int _faceLogin, int _twitLogin, int _googleLogin, int _deleted){
 
 
         this.userID=_userID;

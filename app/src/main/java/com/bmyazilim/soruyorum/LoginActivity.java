@@ -8,9 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bmyazilim.soruyorum.models.Users;
+import com.bmyazilim.soruyorum.utils.Helper;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -65,20 +67,38 @@ public class LoginActivity extends AppCompatActivity {
         Button btngiris=(Button)findViewById(R.id.btn_login);
         LoginButton btnface=(LoginButton)findViewById(R.id.btn_face);
          btntwit=(TwitterLoginButton)findViewById(R.id.btn_twit);
+        TextView register=(TextView)findViewById(R.id.link_signup);
+
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                
+            }
+        });
 
         btnface.setReadPermissions(Arrays.asList("public_profile", "email", "user_birthday", "user_friends"));
 
         btngiris.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                volleyStuff.loginControl(txtmail.getText().toString(), txtsifre.getText().toString(), new VolleyStuff.VolleyCallback() {
-                    @Override
-                    public void onSuccess(String result) {
-                        Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
 
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    }
-                });
+                if (Helper.isValidEmail(txtmail.getText())) {
+
+                    volleyStuff.loginControl(txtmail.getText().toString(), txtsifre.getText().toString(), new VolleyStuff.VolleyCallback() {
+                        @Override
+                        public void onSuccess(String result) {
+                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        }
+                    });
+                }
+                else{
+
+                    Toast.makeText(getApplicationContext(),"Geçerli bir mail adresi giriniz.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
