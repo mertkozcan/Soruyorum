@@ -51,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
     TwitterLoginButton btntwit;
     TwitterAuthClient authClient;
 
+    public static final String PREFS_NAME = "LoginPrefs";
+    private static final String PREF_MAIL = "mail";
+    private static final String PREF_PASSWORD = "password";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +72,8 @@ public class LoginActivity extends AppCompatActivity {
         LoginButton btnface=(LoginButton)findViewById(R.id.btn_face);
          btntwit=(TwitterLoginButton)findViewById(R.id.btn_twit);
         TextView register=(TextView)findViewById(R.id.link_signup);
+
+
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -89,9 +95,21 @@ public class LoginActivity extends AppCompatActivity {
                     volleyStuff.loginControl(txtmail.getText().toString(), txtsifre.getText().toString(), new VolleyStuff.VolleyCallback() {
                         @Override
                         public void onSuccess(String result) {
-                            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
 
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                            if(!result.equals("BOS")) {
+
+                                getSharedPreferences(PREFS_NAME,MODE_PRIVATE)
+                                        .edit()
+                                        .putString(PREF_MAIL, txtmail.getText().toString())
+                                        .putString(PREF_PASSWORD, txtsifre.getText().toString())
+                                        .apply();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+                            else{
+
+                                Toast.makeText(getApplicationContext(),"Yanlış mail adresi veya şifre!",Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }
