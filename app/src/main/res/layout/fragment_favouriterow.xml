@@ -15,6 +15,7 @@
 
         />
 
+
     <TextView android:id="@+id/txtHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,5 +25,13 @@
         android:textColor="#FFFFFF"
         android:text="Weather Photos"
         android:background="#336699" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:text="SİL"
+        android:background="#0099ff"
+
+        />
 
 </LinearLayout>

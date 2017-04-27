@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/com_facebook_messenger_blue"
+    android:background="#a7383d"
     android:fitsSystemWindows="true">
 
     <ListView
