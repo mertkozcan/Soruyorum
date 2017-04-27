@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.TextView;
 
 import com.bmyazilim.soruyorum.models.Users;
 import com.squareup.picasso.Picasso;
@@ -31,6 +32,8 @@ public class ProfileFragment extends Fragment {
     private FragmentTabHost mTabHost;
     VolleyStuff volleyStuff;
     ImageView profilePicture;
+    public static Users _model;
+    TextView txtProfileName;
 
     @Nullable
     @Override
@@ -53,6 +56,7 @@ public class ProfileFragment extends Fragment {
         String password = pref.getString("password", null);
 
           profilePicture=(ImageView) rootView.findViewById(R.id.profilePicture);
+        txtProfileName=(TextView)rootView.findViewById(R.id.txtProfileName);
 
 
         volleyStuff=new VolleyStuff();
@@ -60,6 +64,9 @@ public class ProfileFragment extends Fragment {
         volleyStuff.getProfileInfo(mail, password, new VolleyStuff.jsonVolleyCallback() {
             @Override
             public void onSuccess(Users model) {
+
+                _model=model;
+                txtProfileName.setText(model.userReelName+" "+model.userSurname);
 
                 volleyStuff.getProfilePicture(model.profilePictureID, new VolleyStuff.VolleyCallback() {
                     @Override

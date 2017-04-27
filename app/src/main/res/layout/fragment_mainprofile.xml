@@ -2,86 +2,16 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ff3300"
+    android:background="@color/com_facebook_messenger_blue"
     android:fitsSystemWindows="true">
-    <LinearLayout
-        android:orientation="vertical"
-        android:id="@+id/profileImage"
-        android:layout_width="match_parent"
+
+    <ListView
+        android:id="@+id/profileList"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="86dp"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:entries="@array/profile_preferences_list"
+        android:layout_marginTop="65dp"
 
-</LinearLayout>
+        />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/profileImage"
-        >
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <EditText android:id="@+id/input_profilename"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Ad"
-                android:textColorHint="#99ccff"
-                />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <EditText android:id="@+id/input_profiesurname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Soyad"
-                android:textColorHint="#99ccff"
-                />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <EditText android:id="@+id/input_pmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="Email"
-                android:textColorHint="#99ccff"
-                />
-        </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            >
-
-            <EditText android:id="@+id/input_pkullanici"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="kullanici"
-                android:textColorHint="#99ccff"
-                />
-        </android.support.design.widget.TextInputLayout>
-
-
-    </LinearLayout>
     </RelativeLayout>

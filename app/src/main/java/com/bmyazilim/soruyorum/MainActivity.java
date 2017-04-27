@@ -1,6 +1,7 @@
 package com.bmyazilim.soruyorum;
 
 
+import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,6 +10,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.bvapp.arcmenulibrary.ArcMenu;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +51,25 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).setText("Profil");
 
 
+        ArcMenu menu = (ArcMenu) findViewById(R.id.arcMenu);
+        menu.showTooltip(true);
+        menu.setToolTipBackColor(Color.WHITE);
+        menu.setToolTipCorner(6f);
+        menu.setToolTipPadding(2f);
+        menu.setToolTipTextColor(Color.BLACK);
+        menu.setAnim(300,300,ArcMenu.ANIM_MIDDLE_TO_RIGHT,ArcMenu.ANIM_MIDDLE_TO_RIGHT,
+                ArcMenu.ANIM_INTERPOLATOR_ACCELERATE_DECLERATE,ArcMenu.ANIM_INTERPOLATOR_ACCELERATE_DECLERATE);
+
+        ImageView item=new ImageView(this);
+
+        item.setImageResource(R.drawable.ic_media_play);
+
+        menu.addItem(item, "Soru Sor", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
 
