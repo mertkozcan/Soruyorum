@@ -61,7 +61,7 @@ public class ProfileFragment extends Fragment {
 
         volleyStuff=new VolleyStuff();
 
-        volleyStuff.getProfileInfo(mail, password, new VolleyStuff.jsonVolleyCallback() {
+        volleyStuff.getProfileInfo(mail, password, new VolleyStuff.jsonUsersVolleyCallback() {
             @Override
             public void onSuccess(Users model) {
 

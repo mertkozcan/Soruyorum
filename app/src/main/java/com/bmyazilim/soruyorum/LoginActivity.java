@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "LoginPrefs";
     private static final String PREF_MAIL = "mail";
     private static final String PREF_PASSWORD = "password";
+   public static Users loggedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +105,16 @@ public class LoginActivity extends AppCompatActivity {
                                         .putString(PREF_MAIL, txtmail.getText().toString())
                                         .putString(PREF_PASSWORD, txtsifre.getText().toString())
                                         .apply();
+
+                                volleyStuff.getProfileInfo(txtmail.getText().toString(), txtsifre.getText().toString(), new VolleyStuff.jsonUsersVolleyCallback() {
+                                    @Override
+                                    public void onSuccess(Users model) {
+
+                                        loggedUser=model;
+
+                                    }
+                                });
+
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             }
                             else{

@@ -16,7 +16,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -135,7 +137,7 @@ public class VolleyStuff  {
 
     }
 
-    public void getProfileInfo(String mail, String password, final jsonVolleyCallback callback){
+    public void getProfileInfo(String mail, String password, final jsonUsersVolleyCallback callback){
 
         String tag = "profilbilgileri";
 
@@ -199,15 +201,123 @@ public class VolleyStuff  {
 
     }
 
+    public void getCategories(final CategoryCallback callback){
+
+        String tag = "kategorigetir";
+
+        String url = "http://soruyorum.bmyazilim.net/kontrol.php?islem=kategorigetir";
+
+        JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                List<String> listNames =new ArrayList<>();
+                List<Integer> listIds =new ArrayList<>();
+
+                for(int i =0;i<response.length();i++){
+
+                    try {
+                        listNames.add(response.getJSONObject(i).getString("CategoryName"));
+                        listIds.add(response.getJSONObject(i).getInt("CategoryID"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                callback.onSuccess(listNames,listIds);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+// Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest, tag);
+
+    }
+
+    public void categoryFollow(int userId,int categoryId,final VolleyCallback callback){
+
+        String tag="kategoritakip";
+
+        String url="http://soruyorum.bmyazilim.net/kontrol.php?islem=kategoritakip&userid="+userId+"&categoryid="+categoryId;
+
+        StringRequest stringRequest =new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                callback.onSuccess(response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(stringRequest,tag);
+
+    }
+
+    public void getCategoryFollow(int userId,final CategoryCallback callback){
+
+        String tag = "kategoritakipgetir";
+
+        String url = "http://soruyorum.bmyazilim.net/kontrol.php?islem=kategoritakipedilen&userid="+userId;
+
+        JsonArrayRequest jsonArrayRequest =new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                List<Integer> listIds =new ArrayList<>();
+
+                for(int i =0;i<response.length();i++){
+
+                    try {
+
+                        listIds.add(response.getJSONObject(i).getInt("CategoryID"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                callback.onSuccess(listIds);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+
+// Adding request to request queue
+        AppController.getInstance().addToRequestQueue(jsonArrayRequest, tag);
+
+    }
+
     public interface VolleyCallback{
         void onSuccess(String result);
 
     }
 
-    public interface jsonVolleyCallback{
+    public interface jsonUsersVolleyCallback{
         void onSuccess(Users model);
 
     }
 
+    public interface CategoryCallback{
+
+        void onSuccess(List<String> listNames,List<Integer> listIds);
+
+        void onSuccess(List<Integer> listIds);
+    }
 
 }

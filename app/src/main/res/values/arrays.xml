@@ -14,4 +14,10 @@
         <item>2</item>
 
     </string-array>
+
+    <string-array name="add_question_category">
+
+        <item>Kategori Seçin</item>
+
+    </string-array>
 </resources>

@@ -1,6 +1,8 @@
 package com.bmyazilim.soruyorum;
 
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -13,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.bmyazilim.soruyorum.models.Users;
 import com.bvapp.arcmenulibrary.ArcMenu;
+
+import static com.bmyazilim.soruyorum.LoginActivity.PREFS_NAME;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,10 +41,22 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
 
+    public static Users loggedUser;
+
+    VolleyStuff volleyStuff;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        volleyStuff=new VolleyStuff();
+
+       // SharedPreferences pref = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+       // String mail = pref.getString("mail", null);
+       // String password = pref.getString("password", null);
+
+
 
          vp=(ViewPager)findViewById(R.id.vp);
         tabLayout=(TabLayout)findViewById(R.id.tabs);
@@ -67,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
         menu.addItem(item, "Soru Sor", new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Intent i=new Intent(getApplicationContext(),AddQuestionActivity.class);
+
+                startActivity(i);
 
             }
         });
@@ -96,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             switch(position) {
 
                 case 0: return new HomeFragment();
-                case 1: return new HomeFragment();
+                case 1: return new DiscoverFragment();
                 case 2: return new ProfileFragment();
                 default: return new HomeFragment();
             }
